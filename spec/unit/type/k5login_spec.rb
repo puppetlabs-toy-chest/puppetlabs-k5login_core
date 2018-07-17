@@ -88,7 +88,7 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
                                  when :selrole then 'object_r'
                                  when :seltype then 'krb5_home_t'
                                  when :selrange then 's0'
-                end
+                                 end
                 expect(sel_param.default).to eq(expectedresult)
               end
             end
