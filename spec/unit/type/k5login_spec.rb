@@ -4,7 +4,6 @@ require 'fileutils'
 require 'puppet/type'
 
 describe Puppet::Type.type(:k5login), :unless => Puppet.features.microsoft_windows? do
-  include PuppetSpec::Files
 
   context "the type class" do
     subject { described_class }
