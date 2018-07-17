@@ -31,7 +31,8 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
       selrange: 's0',
     }.merge(attrs)
 
-    if content = attrs.delete(:content)
+    content = attrs.delete(:content)
+    if content
       File.open(path, 'w') { |f| f.print(content) }
     end
 
