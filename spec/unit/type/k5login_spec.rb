@@ -96,7 +96,7 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
 
             context 'without selinux' do
               it 'does not try to determine the initial state' do
-                allow(Puppet::Type::K5login::ProviderK5login.any_instance).to receive(:selinux_support?).and_return false
+                allow(Puppet::Type::K5login::ProviderK5login).to receive(:selinux_support?).and_return false
 
                 expect(subject[:selrole]).to be_nil
               end
