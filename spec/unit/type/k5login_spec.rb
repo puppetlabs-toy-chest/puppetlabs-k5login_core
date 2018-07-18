@@ -8,7 +8,7 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
   let(:path) { tmpfile('k5login') }
 
   context 'the type class' do
-    subject { described_class }
+    subject(:k5login_type) { described_class }
 
     it { is_expected.to be_validattr :ensure }
     it { is_expected.to be_validattr :path }
@@ -61,20 +61,20 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
 
     context 'when the file is present' do
       context 'retrieved initial state' do
-        subject { resource.retrieve }
+        subject(:k5login_provider) { resource.retrieve }
 
         it 'retrieves its properties correctly with zero principals' do
-          expect(subject[:ensure]).to eq(:present)
-          expect(subject[:principals]).to eq([])
+          expect(k5login_provider[:ensure]).to eq(:present)
+          expect(k5login_provider[:principals]).to eq([])
           # We don't really care what the mode is, just that it got it
-          expect(subject[:mode]).not_to be_nil
+          expect(k5login_provider[:mode]).not_to be_nil
         end
 
         context 'with one principal' do
-          subject { resource(content: "daniel@EXAMPLE.COM\n").retrieve }
+          subject(:one_principal) { resource(content: "daniel@EXAMPLE.COM\n").retrieve }
 
           it 'retrieves its principals correctly' do
-            expect(subject[:principals]).to eq(['daniel@EXAMPLE.COM'])
+            expect(one_principal[:principals]).to eq(['daniel@EXAMPLE.COM'])
           end
         end
 
@@ -100,7 +100,7 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
               it 'does not try to determine the initial state' do
                 allow(Puppet::Type::K5login::ProviderK5login).to receive(:selinux_support?).and_return false
 
-                expect(subject[:selrole]).to be_nil
+                expect(k5login_provider[:selrole]).to be_nil
               end
 
               it 'does nothing for safe_insync? if no SELinux support' do
@@ -113,13 +113,13 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
         end
 
         context 'with two principals' do
-          subject do
+          subject(:two_principals) do
             content = ['daniel@EXAMPLE.COM', 'george@EXAMPLE.COM'].join("\n")
             resource(content: content).retrieve
           end
 
           it 'retrieves its principals correctly' do
-            expect(subject[:principals]).to eq(['daniel@EXAMPLE.COM', 'george@EXAMPLE.COM'])
+            expect(two_principals[:principals]).to eq(['daniel@EXAMPLE.COM', 'george@EXAMPLE.COM'])
           end
         end
       end
