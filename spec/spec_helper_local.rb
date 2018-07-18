@@ -1,32 +1,15 @@
-def tmpfile(name, dir = nil)
-  dir ||= Dir.tmpdir
-  path = Puppet::FileSystem.expand_path(make_tmpname(name, nil).encode(Encoding::UTF_8), dir)
-  record_tmp(File.expand_path(path))
+dir = File.expand_path(File.dirname(__FILE__))
+$LOAD_PATH.unshift File.join(dir, 'lib')
 
-  path
+# So everyone else doesn't have to include this base constant.
+module PuppetSpec
+  FIXTURE_DIR = File.join(File.expand_path(File.dirname(__FILE__)), 'fixtures') unless defined?(FIXTURE_DIR)
 end
 
-# Copied from ruby 2.4 source
-def make_tmpname((prefix, suffix), n)
-  prefix = (String.try_convert(prefix) ||
-            raise(ArgumentError, "unexpected prefix: #{prefix.inspect}"))
-  suffix &&= (String.try_convert(suffix) ||
-              raise(ArgumentError, "unexpected suffix: #{suffix.inspect}"))
-  t = Time.now.strftime('%Y%m%d')
-  path = "#{prefix}#{t}-#{$PROCESS_ID}-#{rand(0x100000000).to_s(36)}".dup
-  path << "-#{n}" if n
-  path << suffix if suffix
-  path
-end
+require 'puppet_spec/files'
 
-def record_tmp(tmp)
-  # ...record it for cleanup,
-  $global_tempfiles ||= []
-  $global_tempfiles << tmp
-end
-
-def make_absolute(path)
-  path = File.expand_path(path)
-  path[0] = 'c' if Puppet.features.microsoft_windows?
-  path
+RSpec.configure do |c|
+  c.after :each do
+    PuppetSpec::Files.cleanup
+  end
 end
