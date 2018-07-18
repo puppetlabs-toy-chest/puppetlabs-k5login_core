@@ -2,9 +2,11 @@
   "name": "puppetlabs-k5login_core",
   "version": "1.0.0",
   "author": "Puppet Labs",
-  "summary": "",
+  "summary": "Manage the '.k5login' file for a user.",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/puppetlabs/puppetlabs-k5login_core",
+  "project_page": "https://github.com/puppetlabs/puppetlabs-k5login_core/blob/master/README.md",
+  "issues_url": "https://tickets.puppetlabs.com/projects/MODULES",
   "dependencies": [
 
   ],
