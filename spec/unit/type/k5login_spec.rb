@@ -5,6 +5,8 @@ require 'puppet/type'
 describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows? do
   include PuppetSpec::Files
 
+  let(:path) { tmpfile('k5login') }
+
   context 'the type class' do
     subject { described_class }
 
@@ -19,8 +21,6 @@ describe Puppet::Type.type(:k5login), unless: Puppet.features.microsoft_windows?
     # We have one, inline provider implemented.
     it { is_expected.to be_validattr :provider }
   end
-
-  let(:path) { tmpfile('k5login') }
 
   def resource(attrs = {})
     attrs = {
