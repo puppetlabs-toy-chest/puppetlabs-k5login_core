@@ -1,6 +1,6 @@
 {
   "name": "puppetlabs-k5login_core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Puppet Labs",
   "summary": "Manage the '.k5login' file for a user.",
   "license": "Apache-2.0",
