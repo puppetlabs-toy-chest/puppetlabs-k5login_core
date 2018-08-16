@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 ## [1.0.1] - 2018-09-15
 ### Changed
 - (PUP-9052) Bump puppet req to at least puppet 6
+- (PUP-9053) Enable localization
 
 ## [1.0.0] - 2018-07-18
 ### Summary
