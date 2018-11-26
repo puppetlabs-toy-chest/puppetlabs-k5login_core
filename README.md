@@ -6,10 +6,9 @@
 1. [Description](#description)
 2. [Setup - The basics of getting started with k5login_core](#setup)
     * [Beginning with k5login_core](#beginning-with-k5login_core)
-3. [Usage - Configuration options and additional functionality](#usage)
-4. [Reference - User documentation](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+3. [Reference - User documentation](#reference)
+4. [Limitations - OS compatibility, etc.](#limitations)
+5. [Development - Guide for contributing to the module](#development)
 
 ## Description
 
@@ -32,13 +31,9 @@ file { "/home/name/.k5login":
 }
 ```
 
-## Usage
-
-For details on usage, please see the puppet docs on [k5login](https://puppet.com/docs/puppet/latest/types/k5login.html).
-
 ## Reference
 
-Please see REFERENCE.md for the reference documentation.
+Please see [`REFERENCE.md`](REFERENCE.md) for the reference documentation.
 
 This module is documented using Puppet Strings.
 
