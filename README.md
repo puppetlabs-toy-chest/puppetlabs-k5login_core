@@ -4,19 +4,17 @@
 #### Table of Contents
 
 1. [Description](#description)
-2. [Setup - The basics of getting started with k5login_core](#setup)
-    * [Beginning with k5login_core](#beginning-with-k5login_core)
+2. [Usage](#usage)
 3. [Reference - User documentation](#reference)
-4. [Limitations - OS compatibility, etc.](#limitations)
-5. [Development - Guide for contributing to the module](#development)
+4. [Development - Guide for contributing to the module](#development)
 
+<a id="description"></a>
 ## Description
 
 Manage k5login context of files.
 
-## Setup
-
-### Beginning with k5login_core
+<a id="usage"></a>
+## Usage
 
 To set the `.k5login` file for a user:
 ```
@@ -31,9 +29,10 @@ file { "/home/name/.k5login":
 }
 ```
 
+<a id="reference"></a>
 ## Reference
 
-Please see [`REFERENCE.md`](REFERENCE.md) for the reference documentation.
+Please see REFERENCE.md for the reference documentation.
 
 This module is documented using Puppet Strings.
 
@@ -46,6 +45,7 @@ bundle exec puppet strings generate ./lib/**/*.rb
 ```
 This command will create a browsable `\_index.html` file in the `doc` directory. The references available here are all generated from YARD-style comments embedded in the code base. When any development happens on this module, the impacted documentation should also be updated.ß
 
+<a id="development"></a>
 ## Development
 
 Puppet Labs modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great. We can't access the huge number of platforms and myriad of hardware, software, and deployment configurations that Puppet is intended to serve.
