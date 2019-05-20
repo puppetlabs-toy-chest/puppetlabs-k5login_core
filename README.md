@@ -18,7 +18,7 @@ Manage k5login context of files.
 
 To set the `.k5login` file for a user:
 ```
-file { "/home/name/.k5login":
+k5login { "/home/name/.k5login":
   ensure => present,
   mode => '644',
   principals => ['foo@site.com', 'bar@site.com'],
